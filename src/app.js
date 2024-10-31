@@ -48,12 +48,8 @@ app.use(express.static("public"));
 app.use(cookieParser());
 
 //routes
-import userRouter from "./routes/user.routes.js";
-import docsRouter from "./routes/docs.routes.js";
 import eventRouter from "./routes/events.routes.js";
 //routes declaration
-app.use("/api/v1/users", userRouter);
-app.use("/api/v1/docs", docsRouter);
 app.use("/api/v1/events", eventRouter);
 
 export { app };

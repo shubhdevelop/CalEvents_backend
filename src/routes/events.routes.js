@@ -1,24 +1,24 @@
 import { Router } from "express";
 import {
-  createDoc,
-  getUserDocs,
-  deleteDoc,
-  updateDocSetting,
-} from "../controllers/docs.controller.js";
+  getUserEvents,
+  createEvent,
+  deleteEvent,
+  updateEvent,
+} from "../controllers/event.controller.js";
 import { authenticateUser } from "../middlewares/authenciateUser.js";
 
 const router = Router();
 
-//gets logged in users task
-router.route("/").get(authenticateUser, (req, res) => res.json(req.user));
+// Get logged in user's events
+router.route("/").get(authenticateUser, getUserEvents);
 
-//create logged in users Events
-router.route("/").post(authenticateUser, createDoc);
+// Create logged in user's events
+router.route("/").post(authenticateUser, createEvent);
 
-//Delete's logged in users Events
-router.route("/:eventId").delete(authenticateUser, deleteDoc);
+// Delete logged in user's events
+router.route("/:eventId").delete(authenticateUser, deleteEvent);
 
-//Update's logged in user's Events
-router.route("/").patch(authenticateUser, updateDocSetting);
+// Update logged in user's events
+router.route("/").patch(authenticateUser, updateEvent);
 
 export default router;
